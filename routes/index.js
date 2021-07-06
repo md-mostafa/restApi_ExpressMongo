@@ -43,4 +43,25 @@ router.get('/api/employees/:id', (req, res) => {
     });
 });
 
+
+//update the employee
+
+
+router.put('/api/employees/edit/:id', (req, res) => {
+    const emp = {
+        name: req.body.name,
+        email: req.body.email,
+        salary: req.body.salary
+    };
+
+    Employee.findByIdAndUpdate(req.params.id, { $set:emp }, { new: true}, (err, data) => {
+        if(!err) {
+            res.status(200).json({ code: 200, message: 'Employee Updated Successfully', updatedEmployee: data });
+        }else {
+            console.log(err);
+        }
+    })
+});
+
+
 export default router;

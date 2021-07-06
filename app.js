@@ -1,6 +1,5 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import bodyParser from 'body-parser';
 import connectDB from './config/db.js';
 import employeeRoutes from './routes/index.js';
 
