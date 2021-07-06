@@ -64,4 +64,16 @@ router.put('/api/employees/edit/:id', (req, res) => {
 });
 
 
+//Delete employee
+
+router.delete('/api/employees/:id', (req, res) => {
+    Employee.findByIdAndRemove(req.params.id, (err, data) => {
+        if(!err) {
+            res.status(200).json({ code:200, message: 'Employee Deleted Successfully', deletedEmployee: data });
+        }
+    });
+});
+
+
+
 export default router;
